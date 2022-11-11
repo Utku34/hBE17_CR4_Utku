@@ -215,10 +215,7 @@ opacity: 0.4;
     background-color: #000;
   }
 }
-.hea1{
-    /* background-color: #000;
-    background-color: rgba(255,255,255); */
-}
+
 
 /* ---------------------hero-----------------end------------- */
 
