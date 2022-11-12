@@ -1,3 +1,6 @@
+<?php
+require_once"./component/boot.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,6 @@
 <style>
 body{
     margin: 0;
-    padding-bottom: 800px;
 }
 
 .hero{
@@ -145,9 +147,6 @@ opacity: 0.4;
     text-align: center;
   }
 
-  .main-header .navbar-nav {
-  }
-
   .main-header .navbar-nav li .nav-link {
     text-align: center;
     padding: 20px 15px;
@@ -216,6 +215,53 @@ opacity: 0.4;
   }
 }
 
+.d2{
+    background-color: white;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    margin-left: 130px;
+
+
+}
+.d2 p {
+    padding: 12px;
+}
+.img2{
+    border-radius: 10px;
+    margin-left: 60px;
+    transition: 0.8s;
+}
+.img2:hover{
+    box-shadow: 0px 0px 20px 1px #000;
+    transition: 0.2s;
+}
+
+.h1-2{
+    margin-left: 18px;
+    transition: 0.5s;
+}
+.h1-2:hover{
+    transition: 0.2s;
+    letter-spacing: 2px;
+}
+.f111{
+margin-top: 250px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+box-shadow: 0px 0px 10px 1px #000;
+
+    
+}
+
+.th11{
+font-size: 12px;
+
+}
+
+
+
 
 /* ---------------------hero-----------------end------------- */
 
@@ -224,7 +270,8 @@ opacity: 0.4;
 
 
 </head>
-<body>
+<body style="background-color: #f0f0fa;
+">
 <!-- -------------------Hero-----------START------------ -->
 
 <div class="hea1">
@@ -242,26 +289,18 @@ opacity: 0.4;
         <div class="collapse navbar-collapse" id="mainMenu">
           <ul class="navbar-nav ml-auto text-uppercase f1">
             <li>
-              <a href="#home" class="active active-first">home</a>
+              <a href="index.php?page=home" class="active active-first">Home</a>
             </li>
             <li>
-              <a href="#about">about us</a>
+              <a href="index.php?page=media">Our Media</a>
             </li>
             <li>
-              <a href="#service">services</a>
+              <a href="index.php?page=add-media">Add Your Media</a>
             </li>
             <li>
-              <a href="#project">projects</a>
+              <a href="https://www.utku.at/" target="_blank">About me</a>
             </li>
-            <li>
-              <a href="#team">team</a>
-            </li>
-            <li>
-              <a href="#testimony">testimonils</a>
-            </li>
-            <li>
-              <a href="#contact">contact</a>
-            </li>
+
           </ul>
         </div>
       </nav>
@@ -275,19 +314,6 @@ opacity: 0.4;
 
 <!-- -------------------Hero-----------section---END--------- -->
 
-<div class="hero-sect">
-    <img class="hero" src="./images/hero.jpg" alt="">
-</div>
-
-
-
-
-<h1>hallo das ist das CodeReview <i class="fa-solid fa-book"></i></h1>
-
-
-
-
-
 
 
 
@@ -297,11 +323,131 @@ opacity: 0.4;
 <!-- -------------------------PHP------------SECTION--------- -->
 
 <?php
-require_once"./boot.php";
+require_once "./db_connect.php";
+
+$sql = "SELECT * from media";
+$result = 
+mysqli_query($conn,$sql);
+$tbody = "";
+// var_dump_pretty($result);
+// $row = mysqli_fetch_assoc($result);
+// var_dump_pretty($row);#
+if (mysqli_num_rows($result) > 0) {
+    while ($row =  mysqli_fetch_assoc($result)) {
+        $tbody .= "
+<tr>
+            <td><img class='img-thumbnail' src='pictures/" . $row['image'] . "'</td>
+           <td>" . $row['title'] . "</td>
+           <td>" . $row['short_description'] . "</td>
+           <td>" . $row['type'] . "</td>
+           <td>" . $row['author_ first_name'] . "</td>
+           <td>" . $row['author_ last_name'] . "</td>
+           <td>" . $row['publisher_ name'] . "</td>
+           <td>" . $row['publisher_address'] . "</td>
+           <td>" . $row['publish_date'] . "</td>
+
+
+           <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+           <a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
+            </tr>
+";
+    }
+} else {
+    $tbody = "<tr><td colspan='4' class='text-center'>No data available</td></tr>";
+}
+
+
+
+if ($_GET['page']== 'media') {
+   echo"<br><br><br><h1>Media Page</h1>";
+    
+echo"
+
+<div class='manageProduct w-75 mt-3'>
+<div class='mb-3'>
+    <a href='create.php'><button class='btn btn-primary' type='button'>Add product</button></a>
+</div>
+<p class='h2'>media</p>
+<table class='table table-striped'>
+    <thead class='table-success'>
+        <tr>
+            <th class='th11'>Picture</th>
+            <th class='th11'>Title</th>
+            <th class='th11'>Description</th>
+            <th class='th11'>type</th>
+            <th class='th11'>author first name</th>
+            <th class='th11'>author last name</th>
+            <th class='th11'>publisher name</th>
+            <th class='th11'>publisher address</th>
+            <th class='th11'>publish date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php echo $tbody
+    </tbody>
+</table>
+</div>
+
+";
+
+    }
+else if ($_GET['page'] == 'add-media') {
+  echo"<p>Add media</p>";
+
+    
+} else {  
+    echo "
+    
+    <div class='hero-sect'>
+    <img class='hero' src='./images/hero.jpg' alt=''>
+</div>
+
+
+<br><br>
+
+<h1 class='h1-2'>Welcome to our Libary <i class='fa-solid fa-book'></i></h1>
+
+<br><br>
+<img class='img2' src='https://img.freepik.com/premium-vector/stack-books_639669-32.jpg?size=338&ext=jpg&uid=P28533848&ga=GA1.2.593356510.1665650587&semt=sph'>
+
+
+<div class='d2'>
+<p>
+On our <b>Website</b> you can se allot of Information <br>
+about <b>Media (Books, CDs, DVDs)</b> And what is realy <br>
+special on our page is that you can <b>Add</b> your own <br>
+media on The Website so everyone can see your <br>
+<b>artikle</b> and probaly want to buy it. 
+</p>
+</div>
+    
+    
+    ";
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
 
-
+<!-- ---------footer--------- -->
+<footer id="sticky-footer" class="f111 flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Utkus Libary</small>
+    </div>
+  </footer>
+<!-- ---------footer---------- -->
     
 </body>
 </html>
