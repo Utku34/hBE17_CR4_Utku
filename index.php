@@ -340,9 +340,9 @@ if (mysqli_num_rows($result) > 0) {
            <td>" . $row['title'] . "</td>
            <td>" . $row['short_description'] . "</td>
            <td>" . $row['type'] . "</td>
-           <td>" . $row['author_ first_name'] . "</td>
-           <td>" . $row['author_ last_name'] . "</td>
-           <td>" . $row['publisher_ name'] . "</td>
+           <td>" . $row['author_first_name'] . "</td>
+           <td>" . $row['author_last_name'] . "</td>
+           <td>" . $row['publisher_name'] . "</td>
            <td>" . $row['publisher_address'] . "</td>
            <td>" . $row['publish_date'] . "</td>
 

@@ -19,9 +19,9 @@ if ($_POST) {
     // echo "<br>";
     // var_dump_pretty($image);
     $uploadError = '';
-    $sql = "INSERT into media (title,image,ISBN_code,short_description,author_first_name,author_last_name,publisher_name,publisher_address,publish_date)
-     VALUES('$title', '$image->fileName',$ISBN,'$description','$firstname','$last_name','$pname','$paddress','$pdate')";
-    if (mysqli_query($conn, $sql)) {
+            $sql = "INSERT into media (title,image,ISBN_code,short_description,author_first_name,author_last_name,publisher_name,publisher_address,publish_date)
+            VALUES('$title', '$image->fileName',$ISBN,'$description','$firstname','$last_name','$pname','$paddress','$pdate')";
+            if (mysqli_query($conn, $sql)) {
         $class = "success";
         $message = "The entry below was successfully created <br>
     <table class='table w-50'><tr>
