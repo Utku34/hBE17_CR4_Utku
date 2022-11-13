@@ -295,9 +295,6 @@ font-size: 12px;
               <a href="index.php?page=media">Our Media</a>
             </li>
             <li>
-              <a href="index.php?page=add-media">Add Your Media</a>
-            </li>
-            <li>
               <a href="https://www.utku.at/" target="_blank">About me</a>
             </li>
 
