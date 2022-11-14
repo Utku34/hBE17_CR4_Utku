@@ -331,10 +331,14 @@ $tbody = "";
 // var_dump_pretty($row);#
 if (mysqli_num_rows($result) > 0) {
     while ($row =  mysqli_fetch_assoc($result)) {
+
         $tbody .= "
-<tr>
-            <td><img class='img-thumbnail' src='pictures/" . $row['image'] . "'</td>
-           <td>" . $row['title'] . "</td>
+<tr>";
+    if($row['image']!="")
+$tbody .= "<td><img class='img-thumbnail' src='images/" . $row['image'] . "'</td>";
+           else
+           $tbody .= "<td>&nbsp;</td>";
+            $tbody.="<td>" . $row['title'] . "</td>
            <td>" . $row['short_description'] . "</td>
            <td>" . $row['type'] . "</td>
            <td>" . $row['author_first_name'] . "</td>
@@ -354,9 +358,10 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 
+if(isset($_GET['page'])){
+  if ($_GET['page']== 'media') {
+    echo"<br><br><br><h1>Media Page</h1>";
 
-if ($_GET['page']== 'media') {
-   echo"<br><br><br><h1>Media Page</h1>";
     
 echo"
 
@@ -427,6 +432,7 @@ media on The Website so everyone can see your <br>
 
 
 
+  }
 
 
 

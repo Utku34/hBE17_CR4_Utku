@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD - ERROR</title>
-    <?php require_once "./components/boot.php"; ?>
+    <title></title>
+    <?php require_once "component/boot.php"; ?>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
             <h1>Invalid Request</h1>
         </div>
         <div class="alert alert-warning" role="alert">
-            <p>You've made an invalid request. Please <a href="index.php" class="alert-link">go back</a> to index and
+            <p>You've made an invalid request. Please <a href="index.php?page=home" class="alert-link">go back</a> to index and
                 try again.</p>
         </div>
     </div>

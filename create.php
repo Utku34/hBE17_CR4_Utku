@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+    <title></title>
+
     <style>
     fieldset {
         margin: auto;
@@ -15,17 +16,17 @@
         width: 60%;
     }
     </style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
     <fieldset>
         <legend class='h2'>Add Product</legend>
-        <form action="actions/a_create.php" method="post" enctype="multipart/form-data">
+        <form action="actions/a_create.php" id="create_form" method="post" enctype="multipart/form-data">
             <table class='table'>
                 <tr>
                     <th>title</th>
-                    <td><input class='form-control' type="text" name="title" placeholder="title" /></td>
+                    <td><input class='form-control' type="text" name="title" id="title" placeholder="title" /></td>
                 </tr>
                 <tr>
                     <th>ISBN code</th>
@@ -68,5 +69,9 @@
     </fieldset>
 
 </body>
+<script>
+  
+
+</script>
 
 </html>

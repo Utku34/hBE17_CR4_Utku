@@ -1,22 +1,15 @@
 <?php
-require_once "./db_connect.php";
+require_once "../db_connect.php";
 
 if ($_POST) {
-    $id = $_POST['ISBN code'];
-    $picture = $_POST['image'];
-    $description = $_POST['short_description'];
-    ($picture == "product.png" ?: unlink("../pictures/$picture"));
-    $sql = "DELETE from media WHERE ISBN code = $id";
+    $id = $_POST['id'];
+    $sql = "DELETE from media WHERE id= $id";
     // echo $sql;
     if (mysqli_query($conn, $sql)) {
         $class = "success";
-        $message = "Record deleted";
     } else {
         $class = "danger";
-        $message = "Record not deleted" . $conn->error;
     }
-} else {
-    header("location: ../error.php");
 }
 
 
@@ -28,8 +21,8 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
-    <?php require_once "../components/boot.php"; ?>
+    <title></title>
+    <?php require_once "../component/boot.php"; ?>
 </head>
 
 <body>
@@ -38,8 +31,7 @@ if ($_POST) {
             <h1>Delete request response</h1>
         </div>
         <div class="alert alert-<?= $class; ?>" role="alert">
-            <p><?= $message; ?></p>
-            <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
+            <a href='../index.php?page=home'><button class="btn btn-success" type='button'>Home</button></a>
         </div>
     </div>
 </body>
