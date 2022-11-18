@@ -11,7 +11,7 @@
     require_once "file_upload.php";
     require_once "../db_connect.php";
     ?>
-    <title>CRUD</title>
+    <title></title>
 </head>
 
 <body>
